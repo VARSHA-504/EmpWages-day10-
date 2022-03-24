@@ -2,7 +2,7 @@ package com.bl.empwages;
 
 public class EmpWageComputation {
     //Class constants
-    int WAGE;
+    int DAILY_WAGE;
     int MAX_WORKING_DAYS;
     int MAX_WORKING_HRS;
     String nameOfCompany;
@@ -13,7 +13,7 @@ public class EmpWageComputation {
 
     //Parametrized - Constructor
     EmpWageComputation(String name, int workDays, int workHours, int wage){
-        this.WAGE= wage;
+        this.DAILY_WAGE = wage;
         this.MAX_WORKING_DAYS = workDays;
         this.MAX_WORKING_HRS = workHours;
         this.nameOfCompany = name;
@@ -39,7 +39,7 @@ public class EmpWageComputation {
 
     //Calculate employee salary
     int calSalary(){
-        return WAGE * this.totalHrs;
+        return DAILY_WAGE * this.totalHrs;
     }
 
     //Random employee choice

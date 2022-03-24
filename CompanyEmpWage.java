@@ -7,17 +7,16 @@ public class CompanyEmpWage extends EmpWageComputation {
 
     //Driver method
     public static void main(String[] args) {
-        //    Employee 1 object whose wages need to be calculated.
-        CompanyEmpWage company1 = new CompanyEmpWage("IBM" ,25, 110,23);
-        CompanyEmpWage company2 = new CompanyEmpWage("Google" ,22, 100,28);
 
         //Database Object
         EmpWageBuilder tempStorage = new EmpWageBuilder();
 
         //Adding to storage
-        tempStorage.addRecord(company1);
-        tempStorage.addRecord(company2);
+        tempStorage.addRecord("IBM" ,25, 110,23);
+        tempStorage.addRecord("Google" ,22, 100,28);
+        tempStorage.addRecord("Deep_Mind" ,27, 100,34);
 
         //Displaying the entries
         tempStorage.getRecord();
+
     }
