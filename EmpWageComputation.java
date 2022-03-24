@@ -4,18 +4,33 @@ public class EmpWageComputation {
 
     public static void main(String[] args) {
         //Class constants
-        final int WAGE = 20;
-        final int MAX_WORKING_DAYS = 20;
-        final int MAX_WORKING_HRS = 99;
+        int WAGE;
+        int MAX_WORKING_DAYS;
+        int MAX_WORKING_HRS;
         //class Variables
         int totalHrs = 0;
         int totalDays = 1;
 
+        //Parametrized - Constructor
+        empWageComputation(int workDays, int workHours, int wage){
+            this.WAGE= wage;
+            this.MAX_WORKING_DAYS = workDays;
+            this.MAX_WORKING_HRS = workHours;
+        }
+
         //update employee work hours
         void setTotalHrs(int x){
             switch (x) {
-                case 1 -> this.totalHrs += 8;
-                case 2 -> this.totalHrs += 4;
+                case 1 -> {
+                    if (this.totalHrs <= this.MAX_WORKING_HRS) {
+                        this.totalHrs += 8;
+                    }
+                }
+                case 2 -> {
+                    if (this.totalHrs <= this.MAX_WORKING_HRS) {
+                        this.totalHrs += 4;
+                    }
+                }
                 default -> { }
             }
         }
@@ -33,20 +48,20 @@ public class EmpWageComputation {
         //Driver method
         public static void main(String[] args) {
             //Employee 1 object whose wages need to be calculated.
-            empWageComputation emp1 = new empWageComputation();
+            empWageComputation company1 = new empWageComputation(25, 110,23);
 
             //Looping for a month
-            while (emp1.totalDays != emp1.MAX_WORKING_DAYS && emp1.totalHrs != emp1.MAX_WORKING_HRS) {
-                emp1.totalDays++;
+            while (company1.totalDays != company1.MAX_WORKING_DAYS && company1.totalHrs < company1.MAX_WORKING_HRS) {
+                company1.totalDays++;
                 //Performing check
                 int empCheck = empChoice();
                 //Operations
-                emp1.setTotalHrs(empCheck);
+                company1.setTotalHrs(empCheck);
             }
 
             //Outputs
-            System.out.println("Total Working Days are " +emp1.totalDays);
-            System.out.println("Total Working Hours are " + emp1.totalHrs);
-            System.out.println("The total salary is " + emp1.calSalary());
+            System.out.println("Total Working Days are " +company1.totalDays);
+            System.out.println("Total Working Hours are " + company1.totalHrs);
+            System.out.println("The total salary is " + company1.calSalary());
     }
 }
