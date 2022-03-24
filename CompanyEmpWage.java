@@ -8,6 +8,8 @@ public class CompanyEmpWage extends EmpWageComputation {
     //Driver method
     public static void main(String[] args) {
 
+        System.out.println("Welcome to Employee Wage Builder.");
+
         //Database Object
         EmpWageBuilder tempStorage = new EmpWageBuilder();
 
@@ -20,3 +22,5 @@ public class CompanyEmpWage extends EmpWageComputation {
         tempStorage.getRecord();
 
     }
+
+}
