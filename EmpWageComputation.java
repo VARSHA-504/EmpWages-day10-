@@ -5,19 +5,23 @@ public class EmpWageComputation {
     int WAGE;
     int MAX_WORKING_DAYS;
     int MAX_WORKING_HRS;
+    String nameOfCompany;
     //class Variables
     int totalHrs = 0;
     int totalDays = 1;
+    int totalWage;
 
     //Parametrized - Constructor
-    EmpWageComputation(int workDays, int workHours, int wage){
+    EmpWageComputation(String name, int workDays, int workHours, int wage){
         this.WAGE= wage;
         this.MAX_WORKING_DAYS = workDays;
         this.MAX_WORKING_HRS = workHours;
+        this.nameOfCompany = name;
+        calcTotalWage();
     }
 
     //update employee work hours
-    void setTotalHrs(int x){
+    void setHrs(int x){
         switch (x) {
             case 1 -> {
                 if (this.totalHrs <= this.MAX_WORKING_HRS) {
@@ -41,6 +45,18 @@ public class EmpWageComputation {
     //Random employee choice
     static int empChoice(){
         return (int) Math.floor((Math.random() * 100) % 3);
+    }
+
+    //Wage Builder
+    void calcTotalWage(){
+        while (this.totalDays != this.MAX_WORKING_DAYS && this.totalHrs < this.MAX_WORKING_HRS) {
+            this.totalDays++;
+            //Performing check
+            int empCheck = empChoice();
+            //Operations
+            this.setHrs(empCheck);
+        }
+        this.totalWage = calSalary();
 
     }
 }
