@@ -2,7 +2,7 @@ package com.bl.empwages;
 
 public class EmpWageComputation {
     //Class constants
-    int DAILY_WAGE;
+    int WAGE_PER_HR;
     int MAX_WORKING_DAYS;
     int MAX_WORKING_HRS;
     String nameOfCompany;
@@ -10,10 +10,11 @@ public class EmpWageComputation {
     int totalHrs = 0;
     int totalDays = 1;
     int totalWage;
+    final ArrayList<Integer> dailyWageList = new ArrayList<>();
 
     //Parametrized - Constructor
     EmpWageComputation(String name, int workDays, int workHours, int wage){
-        this.DAILY_WAGE = wage;
+        this.WAGE_PER_HR = wage;
         this.MAX_WORKING_DAYS = workDays;
         this.MAX_WORKING_HRS = workHours;
         this.nameOfCompany = name;
@@ -22,24 +23,29 @@ public class EmpWageComputation {
 
     //update employee work hours
     void setHrs(int x){
+        int dailyWage = 0;
         switch (x) {
             case 1 -> {
                 if (this.totalHrs <= this.MAX_WORKING_HRS) {
                     this.totalHrs += 8;
+                    dailyWage = 8 * WAGE_PER_HR;
+                    dailyWageList.add(dailyWage);
                 }
             }
             case 2 -> {
                 if (this.totalHrs <= this.MAX_WORKING_HRS) {
                     this.totalHrs += 4;
+                    dailyWage = 4 * WAGE_PER_HR;
+                    dailyWageList.add(dailyWage);
                 }
             }
-            default -> { }
+            default -> {dailyWageList.add(dailyWage);}
         }
     }
 
     //Calculate employee salary
     int calSalary(){
-        return DAILY_WAGE * this.totalHrs;
+        return WAGE_PER_HR * this.totalHrs;
     }
 
     //Random employee choice
@@ -57,6 +63,5 @@ public class EmpWageComputation {
             this.setHrs(empCheck);
         }
         this.totalWage = calSalary();
-
     }
 }
